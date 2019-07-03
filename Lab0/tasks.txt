@@ -12,4 +12,23 @@ Date:   Thu Jan 30 15:41:44 2014 +0900
     Add --no-mouse option to replace FZF_MOUSE_ENABLED
 Source for locating the commit: https://mijingo.com/blog/search-git-commits-with-grep
 
+Task 8
+------
+I used the command git diff. Source: http://gitready.com/intermediate/2009/01/30/finding-what-has-been-changed.html
+Message: --- a/Lab0/READMe.txt
++++ b/Lab0/READMe.txt
+@@ -1,4 +1,5 @@
+ Ismael Carreno
+ ismaelcarreno
+ Git is pretty cool
+-Hopefully our last change....
+\ No newline at end of file
++Hopefully our last change....
++This is for task 8
+
+Task 9
+------
+Command: "rm mistake.txt" then I did "git add mistake.txt" and left a commit message to keep record of its existence.
+
+
 
