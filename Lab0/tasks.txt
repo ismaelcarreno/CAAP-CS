@@ -30,5 +30,8 @@ Task 9
 ------
 Command: "rm mistake.txt" then I did "git add mistake.txt" and left a commit message to keep record of its existence.
 
+Task 10
+-------
+I did "git reset --hard HEAD~4" to get rid of the two mistakes and also get rid of two other mistakes that I did during this task. Afterwards I did "git status" and saw that it said, "Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded". This lets me know that I reverted them instead of just removing them.
 
 
