@@ -1,0 +1,5 @@
+Task 6
+------
+How to edit commit comment: git commit --amend -m "New commit message"
+Source: https://stackoverflow.com/questions/10728420/editing-the-git-commit-message-in-github
+
