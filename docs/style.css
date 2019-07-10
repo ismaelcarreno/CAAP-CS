@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+/* Last edit: 2/18/2018 8:00 PM */
+/* Last validated error free: 2/18/2018 9:27 PM */
+
+/* Cite code */
+
+header{
+    color: purple;
+    border-style: solid;
+    border-width: thick;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1 {
+    color: purple;
+    text-align:center;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color: lightgoldenrodyellow;
+}
+
+h2 {
+    color: deepskyblue;
+    text-align:center;
+    font-family: sans-serif;
+    font-style: italic;
+    border-style: solid;
+    border-width: thick;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul{
+    color:darkblue;
+    text-align:center;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+ol{
+    color:darkblue;
+    text-align:center;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+li{
+    display: inline
+}
+
+p{
+    color:darkblue;
+    text-align:center;
+    font-family: sans-serif;
+    display:inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#block{
+    color: darkblue;
+    text-align:center;
+    font-family: sans-serif
+}
+
+h4{
+    color: deepskyblue;
+    text-align:center;
+    font-family: sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    align-items: center;
+    float: none;
+    padding: inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
+}
+
+button{
+    color: darkblue
+}
+
+footer{
+    color: purple;
+    border-style: solid;
+    border-width: thick;
+    margin-left: auto;
+    margin-right: auto;
+}
