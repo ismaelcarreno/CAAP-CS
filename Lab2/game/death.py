@@ -5,8 +5,8 @@ from random import randint
 # in this case, it has a list of phrases to be displayed
 # randomly, and returns the string 'died' to let the engine know.
 class Death(object):
-	quips = ["You died.  You kinda suck at this.",
-			"Your mom would be proud...",
+	quips = ["What a bum!",
+			"How do you suck so much....",
 			"Such a loser.",
 			"I have a small puppy that's better at this.",
 			"Better luck next time."
