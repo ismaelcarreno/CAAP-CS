@@ -8,10 +8,9 @@ class Death(object):
 	quips = ["What a bum!",
 			"How do you suck so much....",
 			"Such a loser.",
-			"I have a small puppy that's better at this.",
-			"Better luck next time."
-			# raise ValueError ('todo')
+			"Get a day job.",
+			"Get a life!"
 			]
 	def enter(self):
-		print (Death.quips[randint(0, len(self.quips)- 1)])
+		print ("\nDEAD:", Death.quips[randint(0, len(self.quips)- 1)])
 		return 'died'

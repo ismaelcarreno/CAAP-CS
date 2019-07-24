@@ -1,4 +1,3 @@
-# imports random madule form library
 from random import randint
 
 # the base class for the scenes.
@@ -12,22 +11,23 @@ class Scene(object):
 		print ("Subclass it and implement enter(), action(), and exit_scene() for each scene.")
 		exit(1)
 
-class Humanities(Scene):
 
-	name = ''#raise ValueError ('todo')
+class Forest(Scene):
+
+	name = 'the_forest'
 
 	def enter(self):
-		print ("You're humanities teacher has bombarded you with work!")
-		#raise ValueError ('todo')
+		print("FOREST\n==========================================")
+		print ("You were hiking on a trail in the alaskan mountains when suddely the whole forest began to tremble. You turn around and see that a 10ft tall monster that is competely covered with hair is running towards you. You begin to panic and...")
 		return self.action() #we're returning the return value of action
 
 
 
 
 	def action(self):
-		print ("What will you do?")
-		#raise ValueError ('todo')
-		choice = input("\n1) - Self-care \n2) - Ignore it  \n3) - Work on Math \nEnter number: ")
+		print ("\nWhat will you do?")
+		
+		choice = input("\n1) - Run into the abyss of the forest \n2) - Run on the trail  \n3) - Hold your ground and fight \nEnter number: ")
 		
 		if choice == ':q':
 			return self.exit_scene(choice)
@@ -35,210 +35,261 @@ class Humanities(Scene):
 		# just accept that it works and keeps the program from falling apart.
 		try:
 		   choice = int(choice)
-		except :
-		   print("That's not an int!")
+		except ValueError:
+		   print("\nTHAT'S NOT AN INT!")
+		   return self.exit_scene(self.name)
+
+
+		if int(choice) == 1:
+			print ("You run off the trail and vanish within the forest.")
+			return self.exit_scene('secret_trail')
+		elif int(choice) == 2:
+			print ("You stay on the trail and just run, hoping for the best.")
+			return self.exit_scene('normal_trail')
+		elif int(choice) == 3:
+			print ("Bigfoot hits you and you go flying. Your body goes limp and everything goes black.")
+			return self.exit_scene('death')
+		else:
+			print ("DOES NOT COMPUTE! Choose an option or type :q to end game")
+			return self.exit_scene(self.name)
+
+	def exit_scene(self, outcome):
+		return outcome 
+
+class NormalTrail(Scene):
+
+	name = 'normal_trail'
+
+	def enter(self):
+		print("NORMAL TRAIL\n==========================================")
+		print ("The trail comes to a dead end where a raging river is blocking your path. Bigfoot is only a few meters behind you.")
+		return self.action()
+
+	def action(self):
+		print ("\nWhat will you do?")
+		choice = input("\n1) - Juke Bigfoot \n2) - Run alongside the river  \n3) - Jump into the river \nEnter number: ")
+		
+		if choice == ':q':
+			return self.exit_scene(choice)
+		try:
+		   choice = int(choice)
+		except ValueError:
+		   print("\nTHAT'S NOT AN INT!")
 		   return self.exit_scene(self.name)
 
 
 
 		if int(choice) == 1:
-			print ("You decide to go biking and suddenly... a car runs over you.")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
+			print ("You slip and Bigfoot steps on you.")
+			return self.exit_scene('death')
 		elif int(choice) == 2:
-			print ("Your ego begins to nag at your conscious and drives you insane.")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
+			print ("You follow the current of the river and run in that direction.")
+			return self.exit_scene('clearing')
 		elif int(choice) == 3:
-			print ("Math is life, so why even bother with reading meaningless literature.")
-			#raise ValueError ('todo')
-			return self.exit_scene('math') # raise ValueError ('todo')
+			print ("You don't know how to swim so the current takes you down and you drown.")
+			return self.exit_scene('death')
 		else:
-			print ("DOES NOT COMPUTE! Choose an option or type :q to end game") # raise ValueError ('todo')
+			print ("DOES NOT COMPUTE! Choose an option or type :q to end game")
 			return self.exit_scene(self.name)
 
 	def exit_scene(self, outcome):
-		return outcome #this is yo outcome
+		return outcome 
 
-class Math(Scene):
+class SecretTrail(Scene):
 
-	name = ''#raise ValueError ('todo')
-
-	def enter(self):
-		print ("You stare at the pset with a quizzical expression.")
-		return self.action()
-		#raise ValueError ('todo')
-		#return raise ValueError ('todo')
-
-	def action(self):
-		print ("You get a notificaion in your email about a posting in Canvas. What's your passcode?")
-		#raise ValueError ('todo')
-		code = [3, 2, 1]
-		guesses = 0
-		# loop to check three random integers, one at a time
-		for i in range(3):
-			print ("Enter digit %d." % (i+1))
-			guess = input("[keypad]> ")
-			if guess == ':q':
-				return self.exit_scene(guess)
-			try:
-			   guess = int(guess)
-			except : #ValueError
-			   print("That's not an int!")
-			   return self.exit_scene(self.name)
-			while int(guess) != code[i] and guesses <10:
-				print ("WRONG!")
-				guesses += 1
-				guess = input("[keypad]> ") #why does this come up twice
-				if guess == ':q':
-					return self.exit_scene(guess)
-				try:
-				   guess = int(guess)
-				except : #ValueError
-				   print("That's not an int!")
-				   guess = -1 #what???
-
-		if guesses < 10:
-			print ("You access your account and see a reminder from your writing workshop.")
-			#raise ValueError ('todo')
-			return self.exit_scene('writing')
-		else:
-			print ("You have forgotten your passcode, so you punch your computer out of frustration and break your hand.")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
-
-	def exit_scene(self, outcome):
-		 return outcome
-	#def exit_scene(raise ValueError ('todo')):
-		#return raise ValueError ('todo') """
-
-
-	
-
-
-
-	"""def enter(self):
-		print ("You do a dive roll into the Weapon Armory, crouch and scan the room")
-		return self.action()
-		#raise ValueError ('todo')
-		#return raise ValueError ('todo')
-
-	def action(self):
-		print ("There's a keypad lock on the box")
-		#raise ValueError ('todo')
-		code = [randint(0,9), randint(0,9), randint(0,9)]
-		guesses = 0
-		# loop to check three random integers, one at a time
-		for i in range(3):
-			print ("Enter digit %d." % (i+1))
-			guess = input("[keypad]> ")
-			if guess == ':q':
-				return self.exit_scene(guess)
-			try:
-			   guess = int(guess)
-			except : #ValueError
-			   print("That's not an int!")
-			   return self.exit_scene(self.name)
-			while int(guess) != code[i] and guesses <10:
-				print ("BZZZZEDDD!")
-				guesses += 1
-				guess = input("[keypad]> ") #why does this come up twice
-				if guess == ':q':
-					return self.exit_scene(guess)
-				try:
-				   guess = int(guess)
-				except : #ValueError
-				   print("That's not an int!")
-				   guess = -1 #what???
-
-		if guesses < 10:
-			print ("The container clicks open and the seal breaks, letting gas out.")
-			#raise ValueError ('todo')
-			return self.exit_scene('the_bridge')
-		else:
-			print ("The lock buzzes one last time and then you hear a sickening")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
-
-	def exit_scene(self, outcome):
-		 return outcome
-	#def exit_scene(raise ValueError ('todo')):
-		#return raise ValueError ('todo') """
-
-class Writing(Scene):
-
-	name ='the_bridge'
+	name ='secret_trail'
 
 	def enter(self):
-		print ("The reminder states that your essay is due tonight, but you haven't started...")
-		#raise ValueError ('todo')
+		print("SECRET TRAIL\n==========================================")
+		print ("You're slowly losing your pace and Bigfoot is getting closer by the passing second. You might be able to run faster, but he will soon catch up when your legs give out.")
 		return self.action() #we're returning the return value of action
 
 	def action(self):
-		print ("What will you do?")
-		#raise ValueError ('todo')
-		choice = input("\n1) - Run away \n2) - Work on it \n3) - Procrastinate \nEnter number: ")
+		print ("\nWhat will you do?")
+		choice = input("\n1) - Hide \n2) - Keep on running \n3) - Turn and fight \nEnter number: ")
 		if choice == ':q':
 			return self.exit_scene(choice)
 		# this is some exception handling, you don't need to worry about it,
 		# just accept that it works and keeps the program from falling apart.
 		try:
 		   choice = int(choice)
-		except :
-		   print("That's not an int!")
+		except ValueError:
+		   print("\nTHAT'S NOT AN INT!")
 		   return self.exit_scene(self.name)
 
 
 
 		if int(choice) == 1:
-			print ("Your stipend is quickly taken away and you're left with nothing.")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
+			print ("You hide under a bush, but Bigfoot finds you and kills you with one punch.")
+			return self.exit_scene('death')
 		elif int(choice) == 2:
-			print ("The pressure is too much for you and your anxiety sky rockets, ultimately giving you an anxiety attack.")
-			#raise ValueError ('todo')
-			return self.exit_scene('death') # raise ValueError ('todo')
+			print ("You keep on running and pray that something will help you.")
+			return self.exit_scene('clearing') 
 		elif int(choice) == 3:
-			print ("You remember that cs is due in two days, so you begin working on it.")
-			#raise ValueError ('todo')
-			return self.exit_scene('computer_science') # raise ValueError ('todo')
+			print ("You charge toward Bigfoot, but he tackles you down and ends your life.")
+			return self.exit_scene('death') 
 		else:
-			print ("DOES NOT COMPUTE! Choose an option or type :q to end game") # raise ValueError ('todo')
+			print ("DOES NOT COMPUTE! Choose an option or type :q to end game")
 			return self.exit_scene(self.name)
 
 	def exit_scene(self, outcome):
 		return outcome
 
-class ComputerScience(Scene):
+class Clearing(Scene):
 
-	name = ''
+	name ='clearing'
 
 	def enter(self):
-		print("Use the Escape Pod!!!!!")
+		print("CLEARING\n==========================================")
+		print ("You stumble upon  a clearing that has a cabin situated on the far end. Bigfoot has closed the distance and is right behind you. Will you make it or should you just find an alternative option....") 
+		return self.action() #we're returning the return value of action
+
+	def action(self):
+		print ("\nWhat will you do?")
+		choice = input("\n1) - Run toward the cabin \n2) - Run into the forest \n3) - Turn and fight \nEnter number: ")
+		if choice == ':q':
+			return self.exit_scene(choice)
+		# this is some exception handling, you don't need to worry about it,
+		# just accept that it works and keeps the program from falling apart.
+		try:
+		   choice = int(choice)
+		except ValueError:
+		   print("\nTHAT'S NOT AN INT!")
+		   return self.exit_scene(self.name)
+
+
+
+		if int(choice) == 1:
+			print ("You run toward the cabin and make it to the door.")
+			return self.exit_scene('cabin')
+		elif int(choice) == 2:
+			print ("You run into the forest and trip, Bigfoot catches up and kills you.")
+			return self.exit_scene('death') 
+		elif int(choice) == 3:
+			print ("You charge toward Bigfoot, but he tackles you down and ends your life.")
+			return self.exit_scene('death') 
+		else:
+			print ("DOES NOT COMPUTE! Choose an option or type :q to end game") 
+			return self.exit_scene(self.name)
+
+	def exit_scene(self, outcome):
+		return outcome
+
+class Cabin(Scene):
+
+	name ='cabin'
+
+	def enter(self):
+		print("CABIN\n==========================================")
+		print ("You notice that the door is unlocked. You turn around and see that Bigfoot will be on the front porch in a matter of seconds.")
+		return self.action() #we're returning the return value of action
+
+	def action(self):
+		print ("\nWhat should you do?")
+		choice = input("\n1) - Hide \n2) - Trap him inside \n3) - Barricade the door \nEnter number: ")
+		if choice == ':q':
+			return self.exit_scene(choice)
+		# this is some exception handling, you don't need to worry about it,
+		# just accept that it works and keeps the program from falling apart.
+		try:
+		   choice = int(choice)
+		except ValueError:
+		   print("\nTHAT'S NOT AN INT!")
+		   return self.exit_scene(self.name)
+
+
+
+		if int(choice) == 1:
+			print ("You hide under the bed, but the attempt is feeble as Bigfoot quickly finds you in the tiny cabin. He steps on you and instantly ends you.")
+			return self.exit_scene('death') 
+		elif int(choice) == 2:
+			print ("You let him in and attempt to juke him, so that he's left inside. However, he trips you as you try to run around and captures you")
+			return self.exit_scene('death') 
+		elif int(choice) == 3:
+			print ("You block the door with the few pieces of furniture that are inside")
+			return self.exit_scene('inside') 
+		else:
+			print ("DOES NOT COMPUTE! Choose an option or type :q to end game") 
+			return self.exit_scene(self.name)
+
+	def exit_scene(self, outcome):
+		return outcome
+
+class Inside(Scene):
+
+	name = 'inside'	
+
+	def enter(self):
+		print("INSIDE\n==========================================")
+		print ("*Bang* *Bang* \nThe barricade is keeping Bigfoot out, but not for long. You begin rummaging through the cabin for anything to aid you. The cabin is pretty empty, but you find a safe under the bed. It has a code, you try to unlock it out of desperation.")
 		return self.action()
-		#raise ValueError ('todo')
+
+	def action(self):
+		code = [2, 1, 4]
+		guesses = 0
+		for i in range(3):
+			print ("Enter digit %d." % (i+1))
+			guess = input("[Lock]> ")
+			if guess == ':q':
+				return self.exit_scene(guess)
+			try:
+			   guess = int(guess)
+			except ValueError:
+			   print("\nTHAT'S NOT AN INT!")
+			   return self.exit_scene(self.name)
+			while int(guess) != code[i] and guesses <10:
+				print ("NOPE!")
+				guesses += 1
+				guess = input("[Lock]> ") 
+				if guess == ':q':
+					return self.exit_scene(guess)
+				try:
+				   guess = int(guess)
+				except ValueError: 
+				   print("\nTHAT'S NOT AN INT!")
+				   return self.exit_scene(guess)
+				   guess = -1 
+
+		if guesses < 10:
+			print ("The safe opens and reveals a possible way to escape.")
+			return self.exit_scene('safe')
+		else:
+			print ("The safe doesn't budge and Bigfoot breaks through the door. He towers over you and ends your life with a single punch.")
+			return self.exit_scene('death')
+
+	def exit_scene(self, outcome):
+		 return outcome
+
+
+
+class Safe(Scene):
+
+	name = 'safe'
+
+	def enter(self):
+		print("SAFE\n==========================================")
+		print("There are 3 different guns within the safe, each with an empty clip. There's a box of ammo, but it corresponds to only one weapon and you have no idea which one it could be. The door breaks behind you, you grab a bullet and choose one of the guns.")
+		return self.action()
 
 
 	def action(self):
-		print ("There's 5 pods, which one do you take?")
-		good_pod =  3  #randint(1,5)
-		guess = input("[pod #]> ")
+		print ("\nWhich one do you take?")
+		good_weapon = randint(1,3)
+		guess = input("[Weapon #]> ")
 
 		if guess == ':q':
 			return self.exit_scene(guess)
 		try:
 		   guess = int(guess)
-		except: #ValueError
+		except ValueError: 
 		   print("That's not an int!")
 		   return self.exit_scene(self.name)
 
-		if int(guess) != good_pod:
-			print ("You jump into pod %s and hit the death button."% guess)
-			#raise ValueError ('todo')
+		if int(guess) != good_weapon:
+			print ("You slip the bullet into the gun, turn, aim and shoot.... the gun doesn't fire. He towers over you and then everything goes black.")
 			return self.exit_scene('death')
 		else:
-			print ("You jump into pod %s and hit the win button."% guess)
-			#raise ValueError ('todo')
+			print ("You slip the bullet into the gun, turn, aim and shoot Bigfoot on the temple. He falls face down on the floor.")
 			return self.exit_scene('finished')
 
 	def exit_scene(self, outcome):

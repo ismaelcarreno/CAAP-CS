@@ -18,43 +18,43 @@ leaderboard = Leaderboard()
 def game_over(won):
 	global name
 	global moves
-	print ("\nGame Over\n")
-	print("Yo moves:", moves)
+	global leaderboard
+	# score = moves
+	print ("================================\nGame Over\n================================")
 	if won == True:
 		print("WINNER WINNER CHICKEN DINNER")
+		print("Your moves:", moves)
+		score = Score(name, moves)
+		if leaderboard.update(score) == True:
+			leaderboard.insert(score)
+
 	else:
-		print("You are a lameoo!!")
-	# score = Score(name, moves)
-	# if (self.escaped == True):
-	# 	leaderboard.update(score)
-		#leaderboard.insert(score)
-	#raise NumberOne("You're Great")
+		print("You became Bigfoot's dinner!")
+	leaderboard.print_board()
 	names = ''
 	moves = 0
-	exit(1)
-	
-	#leaderboard.print_board()
 
 # initializes/updates global variables and introduces the game.
 # starts the Map and the engine.
 # ends the game if needed.
-def play_game():
+def play_game():   #this is where you go to make the leaderboard permanent
 	while True:
 		global name
 		global moves
-		print ("Welcome to my game! To quit enter :q at any time. Good luck!") # raise ValueError ('todo')
-		difficulty = input("\nEnter the number of lives that you want to have, be a man or a chicken (1-2 Hard / 3-5 Medium / 5+ Too easy): ")
+		print ("\nWelcome to FOOT CHASE! To quit enter :q at any time. Good luck!") # raise ValueError ('todo')
+		difficulty = input("\nEnter the number of lives that you want to have, be a man or a chicken.\n(1-2 Hard / 3-5 Medium / 5+ Too easy): ")
 		if (difficulty == ':q'):
 			exit(1)
-		difficulty = eval(difficulty)
-		# if (difficulty == ':q'):
-		# 	exit(1)
-		name = input("\nLet's play. Enter your name. > ") # raise ValueError ('todo')
+		try:
+			difficulty = int(difficulty)
+		except ValueError: 
+			exit(1)
+		name = input("\nLet's play. Enter your name. > ")
 		if (name == ':q' ):
 			exit(1)
-		a_map = Map('humanities') # raise ValueError ('todo')
-		a_game = Engine(a_map, difficulty) #same thing as the thing above
-		moves = a_game.play() #raise ValueError ('todo') ### MOST IMPORTANT FUNCTION
+		a_map = Map('the_forest') 
+		a_game = Engine(a_map, difficulty)
+		moves = a_game.play() 
 		game_over(a_game.won())
 
 play_game()
