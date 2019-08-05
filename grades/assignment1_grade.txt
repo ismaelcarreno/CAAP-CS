@@ -1,0 +1,22 @@
+Assignment 1
+CAAP CMSC 101, Summer 2019
+
+1. Hello world:						5/2 pts
+2. Converter:						6/6 pts
+3. Unit Conversion:					6/6 pts
+4. Slope:							9/10 pts
+5. Fibonacci Sequence:				6/6 pts
+6. Part 2 - Change:					18/20 pts
+7. Part 4:							6/10 pts
+
+Readme file							-5/0 pts
+
+Total								51/60 pts
+
+Comments:
+	-P4: Avoid using reserved words in languages for any variables.
+	-P5: Avoid using reserved words in languages for any variables.
+	-P6: Change function doesn't cover some edge cases (e.g. 0.009999999 should return 1 coin)
+	-P7: Answers to Q2 and Q3 are lacking in detail and effort.
+	-Your README file should be clearer, and well formatted for users to reference easily (headings, sections, etc.). No need to copy each program, we already have the files, simply explain how to run the programs. What are the commands?
+	-MAKE SURE TO DOCUMENT ALL OF YOUR CODE!
