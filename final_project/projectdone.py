@@ -62,9 +62,12 @@ def sorted_anagram():
             anagrams[letters] = anagram_proto[letters].copy()
 
     sorted_dict = sorted(anagrams.items(), key = lambda x : len(x[1]))
-
-    return sorted_dict
-
+    for i in range(len(sorted_dict)):
+        sequence = sorted_dict[i]
+        a_list = list(sequence)
+        print("BAG OF LETTERS:", a_list[0], "\n WORDS:", a_list[1], "\n")
+    
+    print("NUMBER OF ANAGRAMS:", len(anagrams))
 #function for interesting anagrams
 def five_anagrams():
     openfile = open("eng_dict.txt", 'r')
@@ -96,9 +99,12 @@ def five_anagrams():
         if len(anagram_proto[letters]) >= 5:
             anagrams[letters] = anagram_proto[letters].copy()
     sorted_dict = sorted(anagrams.items(), key = lambda x : len(x[1]))
-    #return the anagram dictionary for later use
-    print(sorted_dict)
-    # return anagrams
+    for i in range(len(sorted_dict)):
+        sequence = sorted_dict[i]
+        a_list = list(sequence)
+
+        print("BAG OF LETTERS:", a_list[0], "\n WORDS:", a_list[1], "\n")
+    print("NUMBER OF ANAGRAMS:", len(anagrams))
 
 def i_anagram1(anagrams):
     listvalues1 = []
@@ -113,9 +119,10 @@ def i_anagram1(anagrams):
             firsthalf = wordz[0][0:len(wordz[0])//2]
             lasthalf = wordz[1][len(wordz[1])//2:]
             if firsthalf == lasthalf:
+                print("ANAGRAMS:", wordz)
                 interesting.append(wordz)
-    print(interesting)
-    print(len(interesting))
+    print("NUMBER OF ANAGRAMS:",len(interesting))
+
 
 def i_anagram2(anagrams):
     listvalues2 = []
@@ -132,9 +139,9 @@ def i_anagram2(anagrams):
             last42 = wordzz[0][len(wordzz[1])//2:]
             first42 = wordzz[1][0:len(wordzz[0])//2]
             if first4 == last4 and first42 == last42:
+                print("ANAGRAMS:", wordzz)
                 interesting2.append(wordzz)
-    print(interesting2)
-    print(len(interesting2))
+    print("NUMBER OF ANAGRAMS:",len(interesting2))
 
 
 def anadromes(anagrams):  #CALLED Anadromes
@@ -152,7 +159,8 @@ def anadromes(anagrams):  #CALLED Anadromes
         if primera_reverse == segunda_nonreverse:
             the_semor.append(primera_nonreverse)
             the_semor.append(segunda_nonreverse)
-    print(the_semor)
+    print("ANADROMES:", the_semor)
+    print("NUMBER OF ANADROMES:", len(the_semor)-1)
 
 #all vowels prints the anagrams that contains words that have each vowel atleast once
 def max_vowels(anagrams):
@@ -171,11 +179,10 @@ def max_vowels(anagrams):
         vowel_u = firstword.count("u") // 1
         add_vowels = vowel_a + vowel_e + vowel_i + vowel_o + vowel_u
         if add_vowels > 9:
-        # sum_vowels = vowel_a + vowel_e + vowel_i + vowel_o + vowel_u
-        # min_vowel = 4
-        # if sum_vowels == min_vowel:
+            print("ANAGRAMS WITH 9 VOWELS:", glosario)
+       
             the_vowels.append(glosario)
-    print(the_vowels)
+    print("NUMBER OF ANAGRAMS:", len(the_vowels))
 
 def once_vowels(anagrams):
     listvalues = []
@@ -193,35 +200,32 @@ def once_vowels(anagrams):
         vowel_u = firstword.count("u") // 1
         multiply_vowels = vowel_a * vowel_e * vowel_i * vowel_o * vowel_u
         if multiply_vowels > 1:
-        # sum_vowels = vowel_a + vowel_e + vowel_i + vowel_o + vowel_u
-        # min_vowel = 4
-        # if sum_vowels == min_vowel:
+            print("ANAGRAMS WITH EACH VOWEL:", glosario)
             the_vowels.append(glosario)
-    print(the_vowels)
+    print("NUMBER OF ANAGRAMS:", len(the_vowels))
 
 
 #runs the functions
 if __name__ == '__main__':
     choice = eval(input("Hello! This program gives different interesting functions of anagrams! Select -1 to quit!\n"
-        +"Please select which type of anagrams you want to see! \n1 - All organized anagrams\n2 - Words with 5 anagrams\n3 - Symmetrical Anagrams"
-        +"\n4 - Anagrams flip words\n5 - The anagram with the most vowels  !\n6 - Anadromes\n7 - Anagrams with all the vowels!\n>"))
+        +"Please select which type of anagrams you want to see!\n1 - All anagrams\n2 - Words with 5 anagrams\n3 - Symmetrical Anagrams"
+        +"\n4 - Mirroring Anagrams\n5 - The anagram with the most vowels  !\n6 - Anadromes\n7 - Anagrams with all the vowels!\n>"))
     anagrams = b_anagram()
-    organized = sorted_anagram()
     while choice != -1:
         if choice == 1:
-            print(organized)
-        if choice == 2:
+            sorted_anagram()
+        elif choice == 2:
             five_anagrams()
-        if choice == 3:
+        elif choice == 3:
             i_anagram1(anagrams)
-        if choice == 4:
+        elif choice == 4:
             i_anagram2(anagrams)
-        if choice == 5:
+        elif choice == 5:
             max_vowels(anagrams)
-        if choice == 6:
+        elif choice == 6:
             anadromes(anagrams)
-        if choice == 7:
+        elif choice == 7:
             once_vowels(anagrams)
         choice = eval(input("Hello! This program gives different interesting functions of anagrams! Select -1 to quit!\n"
-        +"Please select which type of anagrams you want to see! \n1 - All anagrams\n2 - Words with 5 anagrams\n3 - Symmetrical Anagrams"
-        +"\n4 - Anagrams flip words\n5 - The anagram with the most vowels  !\n6 - Anadromes\n7 - Anagrams with all the vowels!\n>"))
+        +"Please select which type of anagrams you want to see!\n1 - All anagrams\n2 - Words with 5 anagrams\n3 - Symmetrical Anagrams"
+        +"\n4 - Mirroring Anagrams\n5 - The anagram with the most vowels  !\n6 - Anadromes\n7 - Anagrams with all the vowels!\n>"))
